@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MutableArrayListener_Example' do
+  pod 'MutableArrayListener', :path => '../'
+
+  target 'MutableArrayListener_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

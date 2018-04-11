@@ -1,0 +1,27 @@
+{
+  "name": "MutableArrayListener",
+  "version": "0.1.0",
+  "summary": "A short description of MutableArrayListener.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/scorplot/MutableArrayListener",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "scorplot": "scorplot@aliyun.com"
+  },
+  "source": {
+    "git": "https://github.com/scorplot/MutableArrayListener.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MutableArrayListener/Classes/**/*",
+  "dependencies": {
+    "CircleReferenceCheck": [
+
+    ]
+  }
+}

@@ -1,0 +1,926 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		097A0B6058030E12316A8B3461594855 /* CircleReferenceCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 12447CBE77ABCC59BCAD67EF8EB87794 /* CircleReferenceCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EA5CB36E4E54453648BFE22EF29BCFE /* MutableArrayListener-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E214830CC69CC52A844E6B4B68BD9BB /* MutableArrayListener-dummy.m */; };
+		31B821EA46AB2236F8DF870A4A29C438 /* Pods-MutableArrayListener_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9A1C85313FC2EA804F23AF8A20C9A6 /* Pods-MutableArrayListener_Example-dummy.m */; };
+		3BBCC67EF421D69180B0E0E9BEF56D02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA286750A350021FA27BDA25E4A6E1CC /* Foundation.framework */; };
+		45DD7D64315D28A236AFFBD5A20BA16E /* NSMutableArrayListenerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 50233411C9B5C3A4080D1798BDB4C1F6 /* NSMutableArrayListenerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5274953210EE0BADF79235E61D20E7C5 /* MutableArrayListener.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AE15F79705BFE1BA0194EAEDFF0D53 /* MutableArrayListener.m */; };
+		682249A92906114F22CD381B31B99B98 /* Pods-MutableArrayListener_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E2E3D4363AA55951895F28C20D0367B /* Pods-MutableArrayListener_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		709C699C30B67DAFF4A927FFBD24FC10 /* MutableArrayListener.h in Headers */ = {isa = PBXBuildFile; fileRef = BAF2A0949377ECA72D4D3DB1396E18FA /* MutableArrayListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71EE9E3D9C3E8A8A1DD872A07D45F4F4 /* CircleReferenceCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F2269A13D1260D65374F60DA856157C /* CircleReferenceCheck.framework */; };
+		79C083507706366A1791CE8B8857EEEB /* NSMutableArray+Listener.h in Headers */ = {isa = PBXBuildFile; fileRef = 25E32411700645FEE2EE25BC31F8F2C5 /* NSMutableArray+Listener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83AC72F921F0F8324CE9ECAE6BDD3CC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA286750A350021FA27BDA25E4A6E1CC /* Foundation.framework */; };
+		8C65230BDD510028C0D76038E2025CF8 /* CircleReferenceCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C020A71D1E6B0DD89EACE14AC2DB07 /* CircleReferenceCheck.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8F16DEC7853F20957211DAECFEBBB667 /* CircleReferenceCheck-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37633252D87CE988E327BCD06B81D022 /* CircleReferenceCheck-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FC52A4E200F345EED9238FB0A819839 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA286750A350021FA27BDA25E4A6E1CC /* Foundation.framework */; };
+		919C1DD8599CA1ACEC5D0383342EBEA4 /* MutableArrayListener-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 406B73E7FAA7600BE959AD50406C6372 /* MutableArrayListener-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8D31873FF4459AEDEB38DE48FA5EE38 /* CircleReferenceCheck-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB0C18A8B6572C66D695914F2034B4A /* CircleReferenceCheck-dummy.m */; };
+		CEE4332F45BDD82D6D54BEFACF3EB5C2 /* Pods-MutableArrayListener_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D63B1F850FC3699CBA1D89E460C5E3FC /* Pods-MutableArrayListener_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0825A8D2F0C9C1A0C8D2CB58C7E5D54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA286750A350021FA27BDA25E4A6E1CC /* Foundation.framework */; };
+		DCEA271F87A77B0D7060EC0653B6A1C1 /* Pods-MutableArrayListener_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C399806B5B3B0FA2C0838F07641EDCE6 /* Pods-MutableArrayListener_Tests-dummy.m */; };
+		EAB795623E14ED26CC5E43573C490054 /* NSMutableArray+Listener.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A43E5F20117F5DA98D2F17F522F278 /* NSMutableArray+Listener.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39715D77075B54F7E6A2115917F8DEE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E81762480A240B237E6B57D3D2CD786;
+			remoteInfo = CircleReferenceCheck;
+		};
+		7026C82DD50048893AE97BB4B97831AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ABDCBA1122D32FD43861B5A6D38AC46;
+			remoteInfo = MutableArrayListener;
+		};
+		E04C82D04AE10BB7E763B2F3B3FA5C02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E81762480A240B237E6B57D3D2CD786;
+			remoteInfo = CircleReferenceCheck;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AAEFC674C74B7F371D76C58E7874903 /* Pods-MutableArrayListener_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MutableArrayListener_Tests.modulemap"; sourceTree = "<group>"; };
+		10389682B3BED6ED7D7E643ED44593C2 /* Pods-MutableArrayListener_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MutableArrayListener_Example.modulemap"; sourceTree = "<group>"; };
+		116AFAFC216E5886B8802998F64B53AE /* Pods-MutableArrayListener_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MutableArrayListener_Tests-resources.sh"; sourceTree = "<group>"; };
+		11E6652E866874218FFD27525D366E5E /* CircleReferenceCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CircleReferenceCheck.framework; path = CircleReferenceCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12407043884B672569102854F6BE6426 /* MutableArrayListener-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MutableArrayListener-prefix.pch"; sourceTree = "<group>"; };
+		12447CBE77ABCC59BCAD67EF8EB87794 /* CircleReferenceCheck.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CircleReferenceCheck.h; path = CircleReferenceCheck/Classes/CircleReferenceCheck.h; sourceTree = "<group>"; };
+		1BF8CA13612C6D8F1C97BEEE5652F28B /* Pods-MutableArrayListener_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MutableArrayListener_Example-resources.sh"; sourceTree = "<group>"; };
+		1E2E3D4363AA55951895F28C20D0367B /* Pods-MutableArrayListener_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MutableArrayListener_Example-umbrella.h"; sourceTree = "<group>"; };
+		1F6018861522CDB1A801CAFF06293A66 /* Pods-MutableArrayListener_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MutableArrayListener_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		25E32411700645FEE2EE25BC31F8F2C5 /* NSMutableArray+Listener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+Listener.h"; path = "MutableArrayListener/Classes/NSMutableArray+Listener.h"; sourceTree = "<group>"; };
+		26AAC44AA2D33C8A708BAC4742776BBF /* Pods-MutableArrayListener_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MutableArrayListener_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		29CF2B712E50B7ABCBE6683CA021AC60 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B19F56DD1E8FD03945D9D9C8018262E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E214830CC69CC52A844E6B4B68BD9BB /* MutableArrayListener-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MutableArrayListener-dummy.m"; sourceTree = "<group>"; };
+		2E9C4CB8073883342B8B67C0E9DB4E04 /* MutableArrayListener.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MutableArrayListener.framework; path = MutableArrayListener.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB0C18A8B6572C66D695914F2034B4A /* CircleReferenceCheck-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CircleReferenceCheck-dummy.m"; sourceTree = "<group>"; };
+		316AFD3B184294F9D9ADAAEA4C37FF10 /* Pods-MutableArrayListener_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MutableArrayListener_Example.release.xcconfig"; sourceTree = "<group>"; };
+		37633252D87CE988E327BCD06B81D022 /* CircleReferenceCheck-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircleReferenceCheck-umbrella.h"; sourceTree = "<group>"; };
+		406B73E7FAA7600BE959AD50406C6372 /* MutableArrayListener-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MutableArrayListener-umbrella.h"; sourceTree = "<group>"; };
+		50233411C9B5C3A4080D1798BDB4C1F6 /* NSMutableArrayListenerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSMutableArrayListenerDelegate.h; path = MutableArrayListener/Classes/NSMutableArrayListenerDelegate.h; sourceTree = "<group>"; };
+		57C020A71D1E6B0DD89EACE14AC2DB07 /* CircleReferenceCheck.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CircleReferenceCheck.m; path = CircleReferenceCheck/Classes/CircleReferenceCheck.m; sourceTree = "<group>"; };
+		632A6C19D8438FF98699F688850EC8D2 /* MutableArrayListener.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MutableArrayListener.xcconfig; sourceTree = "<group>"; };
+		6F2269A13D1260D65374F60DA856157C /* CircleReferenceCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleReferenceCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7080B47CFFFC8FED00FE1EA7778E2720 /* Pods-MutableArrayListener_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MutableArrayListener_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		71A43E5F20117F5DA98D2F17F522F278 /* NSMutableArray+Listener.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Listener.m"; path = "MutableArrayListener/Classes/NSMutableArray+Listener.m"; sourceTree = "<group>"; };
+		75B279ACCC5C02E17F37A022E1F9DA1B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77BB7CE9F199A627A6CB3CC2B5D1E124 /* MutableArrayListener.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MutableArrayListener.modulemap; sourceTree = "<group>"; };
+		81CCBD309EDFEE4DF32659B9D124BB20 /* Pods_MutableArrayListener_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MutableArrayListener_Example.framework; path = "Pods-MutableArrayListener_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8A7926CCBE5520A29E9FD4C4AC82A8 /* Pods-MutableArrayListener_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MutableArrayListener_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		90CDBE0259122E506CA6F40F2780AB04 /* Pods_MutableArrayListener_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MutableArrayListener_Tests.framework; path = "Pods-MutableArrayListener_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91069909285FCA71D01F9ACF0A46CBA7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		985171F346B85649C8A6546908C72EE5 /* CircleReferenceCheck-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircleReferenceCheck-prefix.pch"; sourceTree = "<group>"; };
+		9AF75EF4672F21B58C5C3B3555834909 /* CircleReferenceCheck.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CircleReferenceCheck.modulemap; sourceTree = "<group>"; };
+		A6AE15F79705BFE1BA0194EAEDFF0D53 /* MutableArrayListener.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MutableArrayListener.m; path = MutableArrayListener/Classes/MutableArrayListener.m; sourceTree = "<group>"; };
+		B4EA97C9CC8F41A1AC4CAF1DF9E4960D /* CircleReferenceCheck.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CircleReferenceCheck.xcconfig; sourceTree = "<group>"; };
+		BAF2A0949377ECA72D4D3DB1396E18FA /* MutableArrayListener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MutableArrayListener.h; path = MutableArrayListener/Classes/MutableArrayListener.h; sourceTree = "<group>"; };
+		BC1D2293F86E1F87E01DB00B5BE0C353 /* Pods-MutableArrayListener_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MutableArrayListener_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C37D276AF71B47BE1A66E70FEB875244 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		C3989E369C7FF39B9BDF9665B89740C7 /* Pods-MutableArrayListener_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MutableArrayListener_Example-frameworks.sh"; sourceTree = "<group>"; };
+		C399806B5B3B0FA2C0838F07641EDCE6 /* Pods-MutableArrayListener_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MutableArrayListener_Tests-dummy.m"; sourceTree = "<group>"; };
+		D63B1F850FC3699CBA1D89E460C5E3FC /* Pods-MutableArrayListener_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MutableArrayListener_Tests-umbrella.h"; sourceTree = "<group>"; };
+		DB4FED03D91B7DC3791AB83178EBD14F /* Pods-MutableArrayListener_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MutableArrayListener_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DE9A1C85313FC2EA804F23AF8A20C9A6 /* Pods-MutableArrayListener_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MutableArrayListener_Example-dummy.m"; sourceTree = "<group>"; };
+		E564B01D2F3DE3C6339BBCF4BCCAEBE0 /* Pods-MutableArrayListener_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MutableArrayListener_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EA15AD35192E82730B4B2D33BCC59C43 /* Pods-MutableArrayListener_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MutableArrayListener_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		EB63C133A2DE09781A3531D3B4DA308D /* MutableArrayListener.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = MutableArrayListener.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F8AB8610E5A604E44AEC2BF414E849D5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA286750A350021FA27BDA25E4A6E1CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F163FD8ADB0603205C2377010EFD1EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71EE9E3D9C3E8A8A1DD872A07D45F4F4 /* CircleReferenceCheck.framework in Frameworks */,
+				8FC52A4E200F345EED9238FB0A819839 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505362E5240B3D28248CE19850774802 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83AC72F921F0F8324CE9ECAE6BDD3CC9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551EF4460F6D376A9A2449A56AB5C990 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BBCC67EF421D69180B0E0E9BEF56D02 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ED7B2D1A381EBD7C3BA248214C673F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0825A8D2F0C9C1A0C8D2CB58C7E5D54 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05BE0131215419F38D14CD25B3F89945 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				11E6652E866874218FFD27525D366E5E /* CircleReferenceCheck.framework */,
+				2E9C4CB8073883342B8B67C0E9DB4E04 /* MutableArrayListener.framework */,
+				81CCBD309EDFEE4DF32659B9D124BB20 /* Pods_MutableArrayListener_Example.framework */,
+				90CDBE0259122E506CA6F40F2780AB04 /* Pods_MutableArrayListener_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		271ACFB5F3922310618793142800743A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E443E91A5F5EE769F9266799700867FA /* Pods-MutableArrayListener_Example */,
+				A763F9B5C1B22D152DCFB59EC5ACA1B6 /* Pods-MutableArrayListener_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		380B662C1EE4F73D88AAF0418FECA595 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				91069909285FCA71D01F9ACF0A46CBA7 /* LICENSE */,
+				EB63C133A2DE09781A3531D3B4DA308D /* MutableArrayListener.podspec */,
+				C37D276AF71B47BE1A66E70FEB875244 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		431BDB884737A2DA40013FF3FF0CA9FC /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				FA286750A350021FA27BDA25E4A6E1CC /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		4FD4A8888FEA0506261A0D5E0F8A387F /* MutableArrayListener */ = {
+			isa = PBXGroup;
+			children = (
+				BAF2A0949377ECA72D4D3DB1396E18FA /* MutableArrayListener.h */,
+				A6AE15F79705BFE1BA0194EAEDFF0D53 /* MutableArrayListener.m */,
+				25E32411700645FEE2EE25BC31F8F2C5 /* NSMutableArray+Listener.h */,
+				71A43E5F20117F5DA98D2F17F522F278 /* NSMutableArray+Listener.m */,
+				50233411C9B5C3A4080D1798BDB4C1F6 /* NSMutableArrayListenerDelegate.h */,
+				380B662C1EE4F73D88AAF0418FECA595 /* Pod */,
+				E62461587FCA4504F6BB350DC9B7B6AE /* Support Files */,
+			);
+			name = MutableArrayListener;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		68C82E81FB364B582C98A466BCE76C5E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FD4A8888FEA0506261A0D5E0F8A387F /* MutableArrayListener */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				68C82E81FB364B582C98A466BCE76C5E /* Development Pods */,
+				D815E30AF84E99EA6BD68B189402D7A9 /* Frameworks */,
+				ADC685D8E0539F086CD191C701F0B785 /* Pods */,
+				05BE0131215419F38D14CD25B3F89945 /* Products */,
+				271ACFB5F3922310618793142800743A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8AEADC8A108C0C0E7A94BD05E24CD8D5 /* CircleReferenceCheck */ = {
+			isa = PBXGroup;
+			children = (
+				12447CBE77ABCC59BCAD67EF8EB87794 /* CircleReferenceCheck.h */,
+				57C020A71D1E6B0DD89EACE14AC2DB07 /* CircleReferenceCheck.m */,
+				DAFF85FCDA77EC00B3B798C865E02C3A /* Support Files */,
+			);
+			name = CircleReferenceCheck;
+			path = CircleReferenceCheck;
+			sourceTree = "<group>";
+		};
+		A763F9B5C1B22D152DCFB59EC5ACA1B6 /* Pods-MutableArrayListener_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				29CF2B712E50B7ABCBE6683CA021AC60 /* Info.plist */,
+				0AAEFC674C74B7F371D76C58E7874903 /* Pods-MutableArrayListener_Tests.modulemap */,
+				DB4FED03D91B7DC3791AB83178EBD14F /* Pods-MutableArrayListener_Tests-acknowledgements.markdown */,
+				1F6018861522CDB1A801CAFF06293A66 /* Pods-MutableArrayListener_Tests-acknowledgements.plist */,
+				C399806B5B3B0FA2C0838F07641EDCE6 /* Pods-MutableArrayListener_Tests-dummy.m */,
+				26AAC44AA2D33C8A708BAC4742776BBF /* Pods-MutableArrayListener_Tests-frameworks.sh */,
+				116AFAFC216E5886B8802998F64B53AE /* Pods-MutableArrayListener_Tests-resources.sh */,
+				D63B1F850FC3699CBA1D89E460C5E3FC /* Pods-MutableArrayListener_Tests-umbrella.h */,
+				EA15AD35192E82730B4B2D33BCC59C43 /* Pods-MutableArrayListener_Tests.debug.xcconfig */,
+				BC1D2293F86E1F87E01DB00B5BE0C353 /* Pods-MutableArrayListener_Tests.release.xcconfig */,
+			);
+			name = "Pods-MutableArrayListener_Tests";
+			path = "Target Support Files/Pods-MutableArrayListener_Tests";
+			sourceTree = "<group>";
+		};
+		ADC685D8E0539F086CD191C701F0B785 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8AEADC8A108C0C0E7A94BD05E24CD8D5 /* CircleReferenceCheck */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D815E30AF84E99EA6BD68B189402D7A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F2269A13D1260D65374F60DA856157C /* CircleReferenceCheck.framework */,
+				431BDB884737A2DA40013FF3FF0CA9FC /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAFF85FCDA77EC00B3B798C865E02C3A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AF75EF4672F21B58C5C3B3555834909 /* CircleReferenceCheck.modulemap */,
+				B4EA97C9CC8F41A1AC4CAF1DF9E4960D /* CircleReferenceCheck.xcconfig */,
+				2EB0C18A8B6572C66D695914F2034B4A /* CircleReferenceCheck-dummy.m */,
+				985171F346B85649C8A6546908C72EE5 /* CircleReferenceCheck-prefix.pch */,
+				37633252D87CE988E327BCD06B81D022 /* CircleReferenceCheck-umbrella.h */,
+				75B279ACCC5C02E17F37A022E1F9DA1B /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CircleReferenceCheck";
+			sourceTree = "<group>";
+		};
+		E443E91A5F5EE769F9266799700867FA /* Pods-MutableArrayListener_Example */ = {
+			isa = PBXGroup;
+			children = (
+				2B19F56DD1E8FD03945D9D9C8018262E /* Info.plist */,
+				10389682B3BED6ED7D7E643ED44593C2 /* Pods-MutableArrayListener_Example.modulemap */,
+				E564B01D2F3DE3C6339BBCF4BCCAEBE0 /* Pods-MutableArrayListener_Example-acknowledgements.markdown */,
+				7080B47CFFFC8FED00FE1EA7778E2720 /* Pods-MutableArrayListener_Example-acknowledgements.plist */,
+				DE9A1C85313FC2EA804F23AF8A20C9A6 /* Pods-MutableArrayListener_Example-dummy.m */,
+				C3989E369C7FF39B9BDF9665B89740C7 /* Pods-MutableArrayListener_Example-frameworks.sh */,
+				1BF8CA13612C6D8F1C97BEEE5652F28B /* Pods-MutableArrayListener_Example-resources.sh */,
+				1E2E3D4363AA55951895F28C20D0367B /* Pods-MutableArrayListener_Example-umbrella.h */,
+				8B8A7926CCBE5520A29E9FD4C4AC82A8 /* Pods-MutableArrayListener_Example.debug.xcconfig */,
+				316AFD3B184294F9D9ADAAEA4C37FF10 /* Pods-MutableArrayListener_Example.release.xcconfig */,
+			);
+			name = "Pods-MutableArrayListener_Example";
+			path = "Target Support Files/Pods-MutableArrayListener_Example";
+			sourceTree = "<group>";
+		};
+		E62461587FCA4504F6BB350DC9B7B6AE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB8610E5A604E44AEC2BF414E849D5 /* Info.plist */,
+				77BB7CE9F199A627A6CB3CC2B5D1E124 /* MutableArrayListener.modulemap */,
+				632A6C19D8438FF98699F688850EC8D2 /* MutableArrayListener.xcconfig */,
+				2E214830CC69CC52A844E6B4B68BD9BB /* MutableArrayListener-dummy.m */,
+				12407043884B672569102854F6BE6426 /* MutableArrayListener-prefix.pch */,
+				406B73E7FAA7600BE959AD50406C6372 /* MutableArrayListener-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/MutableArrayListener";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1DEDB6CD023710252B213DECAAD8A8F6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				919C1DD8599CA1ACEC5D0383342EBEA4 /* MutableArrayListener-umbrella.h in Headers */,
+				709C699C30B67DAFF4A927FFBD24FC10 /* MutableArrayListener.h in Headers */,
+				79C083507706366A1791CE8B8857EEEB /* NSMutableArray+Listener.h in Headers */,
+				45DD7D64315D28A236AFFBD5A20BA16E /* NSMutableArrayListenerDelegate.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3EF7E7A6B813B82B9BB0D3D9D3A3F26B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				682249A92906114F22CD381B31B99B98 /* Pods-MutableArrayListener_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89B3A6543A2E3BF4F7253372DCB6C16C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F16DEC7853F20957211DAECFEBBB667 /* CircleReferenceCheck-umbrella.h in Headers */,
+				097A0B6058030E12316A8B3461594855 /* CircleReferenceCheck.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4A4691A15DC3AE25BE2C1DF47B3A8D0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE4332F45BDD82D6D54BEFACF3EB5C2 /* Pods-MutableArrayListener_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		334025207A7E4DBC4BC15791C2ADE698 /* Pods-MutableArrayListener_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3044746958EA0018F4B1CFC2BBBA0531 /* Build configuration list for PBXNativeTarget "Pods-MutableArrayListener_Example" */;
+			buildPhases = (
+				9AD9A9A3250E48CE179DD48E75142C01 /* Sources */,
+				505362E5240B3D28248CE19850774802 /* Frameworks */,
+				3EF7E7A6B813B82B9BB0D3D9D3A3F26B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF7550CD2B8B4C83ED6DB8064215005B /* PBXTargetDependency */,
+				42604D0889F36D92BFA43232BDAD13FA /* PBXTargetDependency */,
+			);
+			name = "Pods-MutableArrayListener_Example";
+			productName = "Pods-MutableArrayListener_Example";
+			productReference = 81CCBD309EDFEE4DF32659B9D124BB20 /* Pods_MutableArrayListener_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3E81762480A240B237E6B57D3D2CD786 /* CircleReferenceCheck */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92217F7B9D2E093ABDB5859F774DD6C5 /* Build configuration list for PBXNativeTarget "CircleReferenceCheck" */;
+			buildPhases = (
+				5291EAE0C7162CEBEADF2C4986304822 /* Sources */,
+				8ED7B2D1A381EBD7C3BA248214C673F6 /* Frameworks */,
+				89B3A6543A2E3BF4F7253372DCB6C16C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CircleReferenceCheck;
+			productName = CircleReferenceCheck;
+			productReference = 11E6652E866874218FFD27525D366E5E /* CircleReferenceCheck.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6ABDCBA1122D32FD43861B5A6D38AC46 /* MutableArrayListener */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B24DA182604BB8287D1F887F8608BDB8 /* Build configuration list for PBXNativeTarget "MutableArrayListener" */;
+			buildPhases = (
+				7DC69205B05AF102F9408D10630A9536 /* Sources */,
+				4F163FD8ADB0603205C2377010EFD1EC /* Frameworks */,
+				1DEDB6CD023710252B213DECAAD8A8F6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C15A11890D86AE50D2EF7DBA5CBD7A61 /* PBXTargetDependency */,
+			);
+			name = MutableArrayListener;
+			productName = MutableArrayListener;
+			productReference = 2E9C4CB8073883342B8B67C0E9DB4E04 /* MutableArrayListener.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D51E2B99D23564CCB6A99A6E4DC5D7B8 /* Pods-MutableArrayListener_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53D911BDE40D3D61488261BD482B7D5D /* Build configuration list for PBXNativeTarget "Pods-MutableArrayListener_Tests" */;
+			buildPhases = (
+				425DA86143C455F0DF62FE8FA75FA0F4 /* Sources */,
+				551EF4460F6D376A9A2449A56AB5C990 /* Frameworks */,
+				D4A4691A15DC3AE25BE2C1DF47B3A8D0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MutableArrayListener_Tests";
+			productName = "Pods-MutableArrayListener_Tests";
+			productReference = 90CDBE0259122E506CA6F40F2780AB04 /* Pods_MutableArrayListener_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 05BE0131215419F38D14CD25B3F89945 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E81762480A240B237E6B57D3D2CD786 /* CircleReferenceCheck */,
+				6ABDCBA1122D32FD43861B5A6D38AC46 /* MutableArrayListener */,
+				334025207A7E4DBC4BC15791C2ADE698 /* Pods-MutableArrayListener_Example */,
+				D51E2B99D23564CCB6A99A6E4DC5D7B8 /* Pods-MutableArrayListener_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		425DA86143C455F0DF62FE8FA75FA0F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCEA271F87A77B0D7060EC0653B6A1C1 /* Pods-MutableArrayListener_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5291EAE0C7162CEBEADF2C4986304822 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8D31873FF4459AEDEB38DE48FA5EE38 /* CircleReferenceCheck-dummy.m in Sources */,
+				8C65230BDD510028C0D76038E2025CF8 /* CircleReferenceCheck.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DC69205B05AF102F9408D10630A9536 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EA5CB36E4E54453648BFE22EF29BCFE /* MutableArrayListener-dummy.m in Sources */,
+				5274953210EE0BADF79235E61D20E7C5 /* MutableArrayListener.m in Sources */,
+				EAB795623E14ED26CC5E43573C490054 /* NSMutableArray+Listener.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AD9A9A3250E48CE179DD48E75142C01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31B821EA46AB2236F8DF870A4A29C438 /* Pods-MutableArrayListener_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42604D0889F36D92BFA43232BDAD13FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MutableArrayListener;
+			target = 6ABDCBA1122D32FD43861B5A6D38AC46 /* MutableArrayListener */;
+			targetProxy = 7026C82DD50048893AE97BB4B97831AA /* PBXContainerItemProxy */;
+		};
+		C15A11890D86AE50D2EF7DBA5CBD7A61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CircleReferenceCheck;
+			target = 3E81762480A240B237E6B57D3D2CD786 /* CircleReferenceCheck */;
+			targetProxy = 39715D77075B54F7E6A2115917F8DEE2 /* PBXContainerItemProxy */;
+		};
+		CF7550CD2B8B4C83ED6DB8064215005B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CircleReferenceCheck;
+			target = 3E81762480A240B237E6B57D3D2CD786 /* CircleReferenceCheck */;
+			targetProxy = E04C82D04AE10BB7E763B2F3B3FA5C02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		079AA76286234978A9617203A1DE2BDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA15AD35192E82730B4B2D33BCC59C43 /* Pods-MutableArrayListener_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MutableArrayListener_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MutableArrayListener_Tests/Pods-MutableArrayListener_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MutableArrayListener_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		198D8ECEFFC817E8856FBB885331C05C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 632A6C19D8438FF98699F688850EC8D2 /* MutableArrayListener.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MutableArrayListener/MutableArrayListener-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MutableArrayListener/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MutableArrayListener/MutableArrayListener.modulemap";
+				PRODUCT_NAME = MutableArrayListener;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		298C01781178C0F4F776C0905BF50592 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4EA97C9CC8F41A1AC4CAF1DF9E4960D /* CircleReferenceCheck.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CircleReferenceCheck/CircleReferenceCheck-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CircleReferenceCheck/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CircleReferenceCheck/CircleReferenceCheck.modulemap";
+				PRODUCT_NAME = CircleReferenceCheck;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		33DA7F43A1D2FA3C74A8C8FC246E1FA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		520287FB217B72941520EC49BCA27A67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 632A6C19D8438FF98699F688850EC8D2 /* MutableArrayListener.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MutableArrayListener/MutableArrayListener-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MutableArrayListener/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MutableArrayListener/MutableArrayListener.modulemap";
+				PRODUCT_NAME = MutableArrayListener;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		654D0A283500D2EA142E36032A1DC1FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4EA97C9CC8F41A1AC4CAF1DF9E4960D /* CircleReferenceCheck.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CircleReferenceCheck/CircleReferenceCheck-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CircleReferenceCheck/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CircleReferenceCheck/CircleReferenceCheck.modulemap";
+				PRODUCT_NAME = CircleReferenceCheck;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		731DC216E1A58545B559F6E0A2418060 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		91725AC4CAE44C263144D578E90F6C5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B8A7926CCBE5520A29E9FD4C4AC82A8 /* Pods-MutableArrayListener_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MutableArrayListener_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MutableArrayListener_Example/Pods-MutableArrayListener_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MutableArrayListener_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B52139E47CEA228E59E49BD9463BF418 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC1D2293F86E1F87E01DB00B5BE0C353 /* Pods-MutableArrayListener_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MutableArrayListener_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MutableArrayListener_Tests/Pods-MutableArrayListener_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MutableArrayListener_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E25FB99371C5A4F809F0B51A78F37D47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 316AFD3B184294F9D9ADAAEA4C37FF10 /* Pods-MutableArrayListener_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MutableArrayListener_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MutableArrayListener_Example/Pods-MutableArrayListener_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MutableArrayListener_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33DA7F43A1D2FA3C74A8C8FC246E1FA6 /* Debug */,
+				731DC216E1A58545B559F6E0A2418060 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3044746958EA0018F4B1CFC2BBBA0531 /* Build configuration list for PBXNativeTarget "Pods-MutableArrayListener_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91725AC4CAE44C263144D578E90F6C5C /* Debug */,
+				E25FB99371C5A4F809F0B51A78F37D47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53D911BDE40D3D61488261BD482B7D5D /* Build configuration list for PBXNativeTarget "Pods-MutableArrayListener_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				079AA76286234978A9617203A1DE2BDD /* Debug */,
+				B52139E47CEA228E59E49BD9463BF418 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92217F7B9D2E093ABDB5859F774DD6C5 /* Build configuration list for PBXNativeTarget "CircleReferenceCheck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				298C01781178C0F4F776C0905BF50592 /* Debug */,
+				654D0A283500D2EA142E36032A1DC1FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B24DA182604BB8287D1F887F8608BDB8 /* Build configuration list for PBXNativeTarget "MutableArrayListener" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				198D8ECEFFC817E8856FBB885331C05C /* Debug */,
+				520287FB217B72941520EC49BCA27A67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
