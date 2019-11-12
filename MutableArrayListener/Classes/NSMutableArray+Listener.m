@@ -873,7 +873,7 @@ static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objec
 static void* keyObserver;
 static void* keyOperation;
 
-typedef void(^operationBlock)();
+typedef void(^operationBlock)(void);
 
 static void addOperation(id obj, operationBlock block) {
     if (obj) {
