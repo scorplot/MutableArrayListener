@@ -13,7 +13,6 @@
 
 @property(nonatomic,weak)id<NSMutableArrayListenerDelegate> delegate;
 
--(BOOL)hasListener;
 /**
  add Listener
 
@@ -28,3 +27,12 @@
  */
 -(void)removeListener:(MutableArrayListener * )listener;
 @end
+
+/**
+ create a copy array mirror to the array, make all change operation in main thread,
+ Users should guarantee the array did not changes in two thread at same time.
+ 
+ @param array the array which to be copy
+ @return the array which copied
+ */
+NSArray * MakeMainThreadCopyOfArray(NSArray * array);
