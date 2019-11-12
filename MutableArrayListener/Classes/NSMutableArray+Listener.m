@@ -873,7 +873,9 @@ static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objec
 static void* keyObserver;
 static void* keyOperation;
 
-static void addOperation(id obj, void(^block)()) {
+typedef void(^operationBlock)();
+
+static void addOperation(id obj, operationBlock block) {
     if (obj) {
         @synchronized (obj) {
             NSMutableArray *arr = objc_getAssociatedObject(obj, &keyOperation);
@@ -890,7 +892,7 @@ static void doOperaion(id obj) {
         NSMutableArray *arr = objc_getAssociatedObject(obj, &keyOperation);
         NSArray *temp = [arr copy];
         [arr removeAllObjects];
-        for (void(^block)() in temp) {
+        for (operationBlock block in temp) {
             block();
         }
     }
