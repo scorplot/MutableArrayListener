@@ -34,19 +34,18 @@ static void decreaseCount(){
     }
 }
 
-typedef struct {
+typedef struct _weakKeyList{
     __weak id value;
-    struct weakKeyList *next;
+    struct _weakKeyList *next;
 } weakKeyList;
 
-typedef struct {
+typedef struct _weakKeyMap{
     __weak id key;
     weakKeyList *list;
-    struct weakKeyMap *next;
+    struct _weakKeyMap *next;
 } weakKeyMap;
 
 weakKeyMap *__rootListener;
-static void* __keyListeners;
 static __strong MutableArrayListener** getListeners(NSMutableArray *self) {
     __strong MutableArrayListener** result = nil;
     dispatch_semaphore_wait(__semaphore, DISPATCH_TIME_FOREVER);
@@ -129,7 +128,7 @@ static void addObserver(NSMutableArray *self, MutableArrayListener *observer) {
         }
         if (*_p == nil) {// if not find node, create a node
             *_p = malloc(sizeof(weakKeyMap));
-            memset(*_p, 0, sizeof(weakKeyMap));
+            memset((void*)(*_p), 0, sizeof(weakKeyMap));
             _p_list = &(*_p)->list;
             (*_p)->key = self;
         }
@@ -149,7 +148,7 @@ static void addObserver(NSMutableArray *self, MutableArrayListener *observer) {
         
         if (*_p_list == nil) { // if not find create a node save observer
             *_p_list = malloc(sizeof(weakKeyList));
-            memset(*_p_list, 0, sizeof(weakKeyList));
+            memset((void*)(*_p_list), 0, sizeof(weakKeyList));
             (*_p_list)->value = observer;
         }
         dispatch_semaphore_signal(__semaphore);
@@ -199,7 +198,7 @@ static removeObjectAtIndex_IMP origin_removeObjectAtIndex_IMP = nil;
 static void replace_removeObjectAtIndex_IMP(id self, SEL _cmd ,NSUInteger index){
     
     NSMutableArray* array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         
@@ -214,7 +213,7 @@ static void replace_removeObjectAtIndex_IMP(id self, SEL _cmd ,NSUInteger index)
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didDeleteObjects) {
                         observer.didDeleteObjects(self, @[object], [NSIndexSet indexSetWithIndex:index]);
                     }
@@ -233,7 +232,7 @@ typedef void (*removeObject_IMP)(id self,SEL _cmd,id anObject );
 static removeObject_IMP origin_removeObject_IMP = nil;
 static void replace_removeObject_IMP(id self,SEL _cmd ,id anObject){
     NSMutableArray * array  = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate) ]&& [array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * indexset = [self indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -251,7 +250,7 @@ static void replace_removeObject_IMP(id self,SEL _cmd ,id anObject){
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didDeleteObjects) {
                         observer.didDeleteObjects(self, anObject?@[anObject]:nil, indexset);
                         tmp++;
@@ -269,7 +268,7 @@ typedef void (*removeAllObjects_IMP)(id self,SEL _cmd );
 static removeAllObjects_IMP origin_removeAllObjects_IMP = nil;
 static void replace_removeAllObjects_IMP(id self,SEL _cmd){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_removeAllObjects_IMP(self,_cmd);
@@ -278,10 +277,10 @@ static void replace_removeAllObjects_IMP(id self,SEL _cmd){
             [array.delegate mutableArrayhasChanged:self];
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
-                __unsafe_unretained MutableArrayListener *server = nil;
-                while (server = *tmp) {
-                    if (server.didChanged) {
-                        server.didChanged(self);
+                __unsafe_unretained MutableArrayListener *observer = nil;
+                while ((observer = *tmp)) {
+                    if (observer.didChanged) {
+                        observer.didChanged(self);
                     }
                     tmp++;
                 }
@@ -297,7 +296,7 @@ typedef void (*removeObject_inRange_IMP)(id self,SEL _cmd ,id anObject,NSRange r
 static removeObject_inRange_IMP origin_removeObject_inRange_IMP = nil;
 static void replace_removeObject_inRange_IMP(id self,SEL _cmd,id anObject,NSRange range){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * indexset = [self indexesOfObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range] options:NSEnumerationConcurrent passingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -314,7 +313,7 @@ static void replace_removeObject_inRange_IMP(id self,SEL _cmd,id anObject,NSRang
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didDeleteObjects) {
                         observer.didDeleteObjects(self, @[anObject], indexset);
                     }
@@ -332,7 +331,7 @@ typedef void (*removeObjectIdenticalTo_inRange_IMP)(id self,SEL _cmd ,id anObjec
 static removeObjectIdenticalTo_inRange_IMP origin_removeObjectIdenticalTo_inRange_IMP = nil;
 static void replace_removeObjectIdenticalTo_inRange_IMP(id self,SEL _cmd,id anObject,NSRange range){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * indexset = [self indexesOfObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range] options:NSEnumerationConcurrent passingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -349,7 +348,7 @@ static void replace_removeObjectIdenticalTo_inRange_IMP(id self,SEL _cmd,id anOb
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didDeleteObjects) {
                         observer.didDeleteObjects(self, @[anObject], indexset);
                     }
@@ -367,7 +366,7 @@ typedef void (*removeObjectIdenticalTo_IMP)(id self,SEL _cmd ,id anObject);
 static removeObjectIdenticalTo_IMP origin_removeObjectIdenticalTo_IMP = nil;
 static void replace_removeObjectIdenticalTo_IMP(id self,SEL _cmd,id anObject){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * indexset = [self indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -385,7 +384,7 @@ static void replace_removeObjectIdenticalTo_IMP(id self,SEL _cmd,id anObject){
                 if (listeners) {
                     __strong MutableArrayListener **tmp = listeners;
                     __unsafe_unretained MutableArrayListener *observer = nil;
-                    while (observer = *tmp) {
+                    while ((observer = *tmp)) {
                         if (observer.didDeleteObjects) {
                             observer.didDeleteObjects(self, @[anObject], indexset);
                         }
@@ -405,7 +404,7 @@ typedef void (*removeObjectsInArray_IMP)(id self,SEL _cmd ,NSArray * otherArray)
 static removeObjectsInArray_IMP origin_removeObjectsInArray_IMP = nil;
 static void replace_removeObjectsInArray_IMP(id self,SEL _cmd,NSArray * otherArray){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * indexset = [self indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -424,7 +423,7 @@ static void replace_removeObjectsInArray_IMP(id self,SEL _cmd,NSArray * otherArr
                 if (listeners) {
                     __strong MutableArrayListener **tmp = listeners;
                     __unsafe_unretained MutableArrayListener *observer = nil;
-                    while (observer = *tmp) {
+                    while ((observer = *tmp)) {
                         if (observer.didDeleteObjects) {
                             observer.didDeleteObjects(self, deleteArray, indexset);
                         }
@@ -444,7 +443,7 @@ typedef void (*removeObjectsInRange_IMP)(id self,SEL _cmd ,NSRange range);
 static removeObjectsInRange_IMP origin_removeObjectsInRange_IMP = nil;
 static void replace_removeObjectsInRange_IMP(id self,SEL _cmd,NSRange range){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * indexset = [NSIndexSet indexSetWithIndexesInRange:range ];
@@ -463,7 +462,7 @@ static void replace_removeObjectsInRange_IMP(id self,SEL _cmd,NSRange range){
                 if (listeners) {
                     __strong MutableArrayListener **tmp = listeners;
                     __unsafe_unretained MutableArrayListener *observer = nil;
-                    while (observer = *tmp) {
+                    while ((observer = *tmp)) {
                         if (observer.didDeleteObjects) {
                             observer.didDeleteObjects(self, deleteArray, indexset);
                         }
@@ -482,7 +481,7 @@ typedef void (*removeObjectsAtIndexes_IMP)(id self,SEL _cmd ,NSIndexSet* indexes
 static removeObjectsAtIndexes_IMP origin_removeObjectsAtIndexes_IMP = nil;
 static void replace_removeObjectsAtIndexes_IMP(id self,SEL _cmd,NSIndexSet * indexes){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didDeleteObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         NSIndexSet * arrayIndexSet = [array indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -499,7 +498,7 @@ static void replace_removeObjectsAtIndexes_IMP(id self,SEL _cmd,NSIndexSet * ind
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didDeleteObjects) {
                         observer.didDeleteObjects(self, deleteArray , indexes);
                     }
@@ -520,7 +519,7 @@ typedef void (*replaceObjectAtIndex_withObject_IMP)(id self,SEL _cmd ,NSUInteger
 static replaceObjectAtIndex_withObject_IMP origin_replaceObjectAtIndex_withObject_IMP = nil;
 static void replace_replaceObjectAtIndex_withObject_IMP(id self,SEL _cmd,NSUInteger index ,id anObject){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:replaceObject:withObject:atIndex:)]) || listeners) {
         NSInteger number = increaseCount();
         id object;
@@ -534,7 +533,7 @@ static void replace_replaceObjectAtIndex_withObject_IMP(id self,SEL _cmd,NSUInte
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didReplaceObject) {
                         observer.didReplaceObject(self, object, anObject, index);
                     }
@@ -552,7 +551,7 @@ typedef void (*setObject_atIndexedSubscript_IMP)(id self,SEL _cmd ,id obj,NSUInt
 static setObject_atIndexedSubscript_IMP origin_setObject_atIndexedSubscript_IMP = nil;
 static void replace_setObject_atIndexedSubscript_IMP(id self,SEL _cmd,id obj,NSUInteger index){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:replaceObject:withObject:atIndex:)]) || listeners) {
         NSInteger number = increaseCount();
         id object;
@@ -569,7 +568,7 @@ static void replace_setObject_atIndexedSubscript_IMP(id self,SEL _cmd,id obj,NSU
                 if (listeners) {
                     __strong MutableArrayListener **tmp = listeners;
                     __unsafe_unretained MutableArrayListener *observer = nil;
-                    while (observer = *tmp) {
+                    while ((observer = *tmp)) {
                         if (observer.didAddObjects) {
                             observer.didAddObjects(self, @[[array firstObject]], [NSIndexSet indexSetWithIndex:index]);
                         }
@@ -581,7 +580,7 @@ static void replace_setObject_atIndexedSubscript_IMP(id self,SEL _cmd,id obj,NSU
                 if (listeners) {
                     __strong MutableArrayListener **tmp = listeners;
                     __unsafe_unretained MutableArrayListener *observer = nil;
-                    while (observer = *tmp) {
+                    while ((observer = *tmp)) {
                         if (observer.didReplaceObject) {
                             observer.didReplaceObject(self, object, obj, index);
                         }
@@ -600,7 +599,7 @@ typedef void (*replaceObjectsAtIndexes_withObjects_IMP)(id self,SEL _cmd ,NSInde
 static replaceObjectsAtIndexes_withObjects_IMP origin_replaceObjectsAtIndexes_withObjects_IMP = nil;
 static void replace_replaceObjectsAtIndexes_withObjects_IMP(id self,SEL _cmd,NSIndexSet * indexes,NSArray * objects){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_replaceObjectsAtIndexes_withObjects_IMP(self,_cmd,indexes,objects);
@@ -610,7 +609,7 @@ static void replace_replaceObjectsAtIndexes_withObjects_IMP(id self,SEL _cmd,NSI
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -624,11 +623,11 @@ static void replace_replaceObjectsAtIndexes_withObjects_IMP(id self,SEL _cmd,NSI
     freeListeners(listeners);
 }
 
-typedef void (*replaceObjectsInRange_withObjectsFromArray_IMP)(id self,SEL _cmd ,NSRange range ,NSArray * array);
+typedef void (*replaceObjectsInRange_withObjectsFromArray_IMP)(NSMutableArray *self,SEL _cmd ,NSRange range ,NSArray * array);
 static replaceObjectsInRange_withObjectsFromArray_IMP origin_replaceObjectsInRange_withObjectsFromArray_IMP = nil;
-static void replace_replaceObjectsInRange_withObjectsFromArray_IMP(id self,SEL _cmd,NSRange range,NSArray * array){
+static void replace_replaceObjectsInRange_withObjectsFromArray_IMP(NSMutableArray *self,SEL _cmd,NSRange range,NSArray * array){
     NSMutableArray * arrayself = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([arrayself.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[arrayself.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_replaceObjectsInRange_withObjectsFromArray_IMP(self,_cmd,range,array);
@@ -638,7 +637,7 @@ static void replace_replaceObjectsInRange_withObjectsFromArray_IMP(id self,SEL _
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -656,7 +655,7 @@ typedef void (*replaceObjectsInRange_withObjectsFromArray_range_IMP)(id self,SEL
 static replaceObjectsInRange_withObjectsFromArray_range_IMP origin_replaceObjectsInRange_withObjectsFromArray_range_IMP = nil;
 static void replace_replaceObjectsInRange_withObjectsFromArray_range_IMP(id self,SEL _cmd,NSRange range,NSArray * otherArray,NSRange otherRange){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_replaceObjectsInRange_withObjectsFromArray_range_IMP(self,_cmd,range,otherArray,otherRange);
@@ -666,7 +665,7 @@ static void replace_replaceObjectsInRange_withObjectsFromArray_range_IMP(id self
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -687,7 +686,7 @@ typedef void (*sortUsingComparator_IMP)(id self,SEL _cmd ,NSComparator cmptr);
 static sortUsingComparator_IMP origin_sortUsingComparator_IMP = nil;
 static void replace_sortUsingComparator_IMP(id self,SEL _cmd,NSComparator cmptr){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_sortUsingComparator_IMP(self,_cmd,cmptr);
@@ -697,7 +696,7 @@ static void replace_sortUsingComparator_IMP(id self,SEL _cmd,NSComparator cmptr)
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -715,7 +714,7 @@ typedef void (*sortUsingSelector_IMP)(id self,SEL _cmd ,SEL comparator);
 static sortUsingSelector_IMP origin_sortUsingSelector_IMP = nil;
 static void replace_sortUsingSelector_IMP(id self,SEL _cmd,SEL comparator){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_sortUsingSelector_IMP(self,_cmd,comparator);
@@ -725,7 +724,7 @@ static void replace_sortUsingSelector_IMP(id self,SEL _cmd,SEL comparator){
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -743,7 +742,7 @@ typedef void (*sortUsingDescriptors_IMP)(id self,SEL _cmd ,NSArray * sortDescrip
 static sortUsingDescriptors_IMP origin_sortUsingDescriptors_IMP = nil;
 static void replace_sortUsingDescriptors_IMP(id self,SEL _cmd,NSArray * sortDescriptors){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_sortUsingDescriptors_IMP(self,_cmd,sortDescriptors);
@@ -753,7 +752,7 @@ static void replace_sortUsingDescriptors_IMP(id self,SEL _cmd,NSArray * sortDesc
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -771,7 +770,7 @@ typedef void (*sortUsingFunction_context_IMP)(id self,SEL _cmd, NSInteger(*compa
 static sortUsingFunction_context_IMP origin_sortUsingFunction_context_IMP = nil;
 static void replace_sortUsingFunction_context_IMP(id self,SEL _cmd, NSInteger(*compare)(id  _Nonnull __strong, id  _Nonnull __strong , void * _Nullable),void(*context)){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_sortUsingFunction_context_IMP(self,_cmd, compare,context);
@@ -781,7 +780,7 @@ static void replace_sortUsingFunction_context_IMP(id self,SEL _cmd, NSInteger(*c
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -800,7 +799,7 @@ typedef void (*sortWithOptions_usingComparator_IMP)(id self,SEL _cmd ,NSSortOpti
 static sortWithOptions_usingComparator_IMP origin_sortWithOptions_usingComparator_IMP = nil;
 static void replace_sortWithOptions_usingComparator_IMP(id self,SEL _cmd,NSSortOptions opts,NSComparator cmptr){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_sortWithOptions_usingComparator_IMP(self,_cmd,opts,cmptr);
@@ -810,7 +809,7 @@ static void replace_sortWithOptions_usingComparator_IMP(id self,SEL _cmd,NSSortO
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -826,11 +825,11 @@ static void replace_sortWithOptions_usingComparator_IMP(id self,SEL _cmd,NSSortO
 
 #pragma mark  - reset
 
-typedef void (*setArray_IMP)(id self,SEL _cmd ,NSArray * array);
+typedef void (*setArray_IMP)(id self,SEL _cmd ,NSMutableArray * array);
 static setArray_IMP origin_setArray_IMP = nil;
-static void replace_setArray_IMP(id self,SEL _cmd,NSArray * array){
+static void replace_setArray_IMP(id self,SEL _cmd,NSMutableArray * array){
     NSMutableArray * arrayself= self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([arrayself.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[arrayself.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_setArray_IMP(self,_cmd,array);
@@ -840,7 +839,7 @@ static void replace_setArray_IMP(id self,SEL _cmd,NSArray * array){
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -860,7 +859,7 @@ typedef void (*exchangeObjectAtIndex_withObjectAtIndex_IMP)(id self,SEL _cmd ,NS
 static exchangeObjectAtIndex_withObjectAtIndex_IMP origin_exchangeObjectAtIndex_withObjectAtIndex_IMP = nil;
 static void replace_exchangeObjectAtIndex_withObjectAtIndex_IMP(id self,SEL _cmd,NSUInteger index1,NSUInteger index2){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:exchangeObjectAtIndex:withObjectAtIndex:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_exchangeObjectAtIndex_withObjectAtIndex_IMP(self,_cmd,index1,index2);
@@ -870,7 +869,7 @@ static void replace_exchangeObjectAtIndex_withObjectAtIndex_IMP(id self,SEL _cmd
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didExchangeIndex) {
                         observer.didExchangeIndex(self, index1, index2);
                     }
@@ -891,7 +890,7 @@ typedef void (*filterUsingPredicate_IMP)(id self,SEL _cmd ,NSPredicate * predica
 static filterUsingPredicate_IMP origin_filterUsingPredicate_IMP = nil;
 static void replace_filterUsingPredicate_IMP(id self,SEL _cmd,NSPredicate * predicate){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArrayhasChanged:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_filterUsingPredicate_IMP(self,_cmd,predicate);
@@ -901,7 +900,7 @@ static void replace_filterUsingPredicate_IMP(id self,SEL _cmd,NSPredicate * pred
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didChanged) {
                         observer.didChanged(self);
                     }
@@ -921,7 +920,7 @@ typedef void (*insertObject_atIndex_IMP)(id self, SEL _cmd ,id anObject ,NSUInte
 static insertObject_atIndex_IMP origin_insertObject_atIndex = nil;
 static void replace_insertObject_atIndex(id self, SEL _cmd ,id anObject ,NSUInteger index){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate) ]&& [array.delegate respondsToSelector:@selector(mutableArray:didAddObjects:atIndexes:)]) || listeners) {
         
         NSInteger number = increaseCount();
@@ -932,7 +931,7 @@ static void replace_insertObject_atIndex(id self, SEL _cmd ,id anObject ,NSUInte
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didAddObjects) {
                         observer.didAddObjects(self, @[anObject], [NSIndexSet indexSetWithIndex:index]);
                     }
@@ -950,7 +949,7 @@ typedef void (*addObjectsFromArray_IMP)(id self,SEL _cmd,NSArray * otherArray );
 static addObjectsFromArray_IMP  origin_addObjectsFromArray =nil;
 static void replace_addObjectsFromArray (id self,SEL _cmd ,NSArray * otherArray){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didAddObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_addObjectsFromArray(self,_cmd,otherArray);
@@ -968,7 +967,7 @@ static void replace_addObjectsFromArray (id self,SEL _cmd ,NSArray * otherArray)
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didAddObjects) {
                         observer.didAddObjects(self, otherArray, indexSet);
                     }
@@ -986,7 +985,7 @@ typedef void (*insertObjects_atIndexes_IMP)(id self,SEL _cmd,NSArray * objects,N
 static insertObjects_atIndexes_IMP origin_insertObjects_atIndexes_IMP =nil;
 static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objects,NSIndexSet* indexes){
     NSMutableArray * array = self;
-    __strong MutableArrayListener **listeners = getListeners(array);
+    __strong MutableArrayListener **listeners = getListeners(self);
     if (([array.delegate conformsToProtocol:@protocol(NSMutableArrayListenerDelegate)]&&[array.delegate respondsToSelector:@selector(mutableArray:didAddObjects:atIndexes:)]) || listeners) {
         NSInteger number = increaseCount();
         origin_insertObjects_atIndexes_IMP(self,_cmd,objects,indexes);
@@ -996,7 +995,7 @@ static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objec
             if (listeners) {
                 __strong MutableArrayListener **tmp = listeners;
                 __unsafe_unretained MutableArrayListener *observer = nil;
-                while (observer = *tmp) {
+                while ((observer = *tmp)) {
                     if (observer.didAddObjects) {
                         observer.didAddObjects(self, objects, indexes);
                     }
