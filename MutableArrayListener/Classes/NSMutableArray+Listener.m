@@ -72,6 +72,7 @@ static __strong MutableArrayListener** getListeners(NSMutableArray *self) {
     if (count > 0) {
         // result is nil tail array
         result = (__strong MutableArrayListener**)malloc(sizeof(id)*(count+1));
+        memset(result, 0, sizeof(id)*(count+1)); // set init value to nil
         count = 0;
         tmp = p_list;
         while (tmp) {
@@ -81,7 +82,6 @@ static __strong MutableArrayListener** getListeners(NSMutableArray *self) {
             }
             tmp = tmp->next;
         }
-        ((uintptr_t*)((void*)result))[count] = 0; // make tail is 0
     }
     dispatch_semaphore_signal(__semaphore);
     return result;
@@ -123,6 +123,7 @@ static void addObserver(NSMutableArray *self, MutableArrayListener *observer) {
                 weakKeyMap *next = (*_p)->next;
                 free(*_p);
                 *_p = next;
+                continue;
             }
             _p = &(*_p)->next;
         }
@@ -173,18 +174,20 @@ static void removeObserver(NSMutableArray *self, MutableArrayListener *observer)
             _p = &(*_p)->next;
         }
         
-        // find the observer node
-        while (*_p_list) {
-            if ((*_p_list)->value == observer) {
-                (*_p_list)->value = nil;
-                break;
-            } else if ((*_p_list)->value == nil) {
-                weakKeyList *next = (*_p_list)->next;
-                free((*_p_list));
-                *_p_list = next;
-                continue;
+        if (_p_list) {
+            // find the observer node
+            while (*_p_list) {
+                if ((*_p_list)->value == observer) {
+                    (*_p_list)->value = nil;
+                    break;
+                } else if ((*_p_list)->value == nil) {
+                    weakKeyList *next = (*_p_list)->next;
+                    free((*_p_list));
+                    *_p_list = next;
+                    continue;
+                }
+                _p_list = &(*_p_list)->next;
             }
-            _p_list = &(*_p_list)->next;
         }
         
         dispatch_semaphore_signal(__semaphore);
@@ -1040,7 +1043,9 @@ static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objec
     removeObserver(self, observer);
 }
 
-+(void)load{
++(void)load{    
+    __semaphore = dispatch_semaphore_create(1);
+
     Method method;
     Class  class = NSClassFromString(@"__NSArrayM");
 #pragma mark - insert
@@ -1124,8 +1129,6 @@ static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objec
 #pragma mark - filter   
     method = class_getInstanceMethod(class, @selector(filterUsingPredicate:));
     origin_filterUsingPredicate_IMP =(filterUsingPredicate_IMP)method_setImplementation(method, (IMP)replace_filterUsingPredicate_IMP);
-    
-    __semaphore = dispatch_semaphore_create(1);
 }
 
 #pragma mark - property
