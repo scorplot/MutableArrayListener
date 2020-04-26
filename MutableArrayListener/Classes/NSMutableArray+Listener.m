@@ -12,6 +12,7 @@
 #import "CircleReferenceCheck.h"
 
 dispatch_semaphore_t __semaphore;
+dispatch_semaphore_t __semaphoreOpe;
 static NSMutableDictionary<NSValue*,NSNumber*>* __tickCount;
 
 static NSInteger increaseCount(){
@@ -1045,6 +1046,7 @@ static void replace_insertObjects_atIndexes_IMP(id self,SEL _cmd,NSArray * objec
 
 +(void)load{    
     __semaphore = dispatch_semaphore_create(1);
+    __semaphoreOpe = dispatch_semaphore_create(1);
 
     Method method;
     Class  class = NSClassFromString(@"__NSArrayM");
@@ -1156,25 +1158,25 @@ static void* keyOperation;
 typedef void(^operationBlock)(void);
 static void addOperation(id obj, operationBlock block) {
     if (obj) {
-        dispatch_semaphore_wait(__semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(__semaphoreOpe, DISPATCH_TIME_FOREVER);
         NSMutableArray *arr = objc_getAssociatedObject(obj, &keyOperation);
         if (arr == nil) {
             arr = [[NSMutableArray alloc] init];
             objc_setAssociatedObject(obj, &keyOperation, arr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         [arr addObject:block];
-        dispatch_semaphore_signal(__semaphore);
+        dispatch_semaphore_signal(__semaphoreOpe);
     }
 }
 static void doOperaion(id obj) {
-    dispatch_semaphore_wait(__semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_semaphore_wait(__semaphoreOpe, DISPATCH_TIME_FOREVER);
     NSMutableArray *arr = objc_getAssociatedObject(obj, &keyOperation);
     NSArray *temp = [arr copy];
     [arr removeAllObjects];
     for (operationBlock block in temp) {
         block();
     }
-    dispatch_semaphore_signal(__semaphore);
+    dispatch_semaphore_signal(__semaphoreOpe);
 }
 
 /**
