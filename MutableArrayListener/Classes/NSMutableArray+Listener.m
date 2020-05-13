@@ -1173,10 +1173,10 @@ static void doOperaion(id obj) {
     NSMutableArray *arr = objc_getAssociatedObject(obj, &keyOperation);
     NSArray *temp = [arr copy];
     [arr removeAllObjects];
+    dispatch_semaphore_signal(__semaphoreOpe);
     for (operationBlock block in temp) {
         block();
     }
-    dispatch_semaphore_signal(__semaphoreOpe);
 }
 
 /**
